@@ -48,7 +48,7 @@ def create_tiles(infile, tilesize, tile_type):
     Creates smaller raster chunks (tiles) from an input raster and saves them in a folder.
     
     The output file names follow the format:
-        {base_name}_{tile_type}_{i}_{j}.nc
+        {base_name}_{tile_type}_{i}_{j}.tif
     where {base_name} is the input file's name without extension.
     
     The tiles are saved inside a folder named after the input file.
@@ -74,8 +74,8 @@ def create_tiles(infile, tilesize, tile_type):
     # If the tile size is greater than or equal to both dimensions,
     # create only one file that is the same as the original file.
     if tilesize >= width and tilesize >= height:
-        outfile = os.path.join(out_folder, f"{infile_basename}_{tile_type}_0_0.nc")
-        options = gdal.TranslateOptions(format='netCDF', srcWin=[0, 0, width, height])
+        outfile = os.path.join(out_folder, f"{infile_basename}_{tile_type}_0_0.tif")
+        options = gdal.TranslateOptions(format='GTiff', srcWin=[0, 0, width, height])
         gdal.Translate(outfile, ds, options=options)
         print(f"Created single tile (original file): {outfile}")
         ds = None
@@ -88,10 +88,10 @@ def create_tiles(infile, tilesize, tile_type):
             tile_height = min(tilesize, height - j)
             
             # Build the output filename in the respective folder
-            outfile = os.path.join(out_folder, f"{infile_basename}_{tile_type}_{i}_{j}.nc")
+            outfile = os.path.join(out_folder, f"{tile_type}_{i}_{j}.tif")
             
             # Define translation options to create a tile using a subset (srcWin)
-            options = gdal.TranslateOptions(format='netCDF', srcWin=[i, j, tile_width, tile_height])
+            options = gdal.TranslateOptions(format='GTiff', srcWin=[i, j, tile_width, tile_height])
             gdal.Translate(outfile, ds, options=options)
             print(f"Created tile: {outfile}")
     
