@@ -373,15 +373,23 @@ def process_metfiles(netcdf_file, raster_folder, base_path, selected_date_str):
 # =============================================================================
 # Main function: gets user inputs, checks rasters, creates tiles, and processes metfiles.
 # =============================================================================
-def main():
+base_path = "C:/Users/hk25639/Desktop/Austin/"
+building_dsm_filename = 'Building_DSM.tif'
+dem_filename = 'DEM.tif'
+trees_filename = 'Trees.tif'
+tile_size = 3600
+netcdf_filename = 'Control.nc'
+selected_date_str = '2020-08-13'
+
+def main(base_path, building_dsm_filename, dem_filename, trees_filename, tile_size, netcdf_filename, selected_date_str):
     # Get input parameters from the user
-    base_path = "C:/Users/hk25639/Desktop/Austin/"
-    building_dsm_filename = 'Building_DSM.tif'
-    dem_filename = 'DEM.tif'
-    trees_filename = 'Trees.tif'
-    tile_size = 3600
-    netcdf_filename = 'Control.nc'
-    selected_date_str = '2020-08-13'
+    base_path = base_path
+    building_dsm_filename = building_dsm_filename
+    dem_filename = dem_filename
+    trees_filename = trees_filename
+    tile_size = tile_size
+    netcdf_filename = netcdf_filename
+    selected_date_str = selected_date_str
 
     # Construct full paths for each input file
     building_dsm_path = os.path.join(base_path, building_dsm_filename)
@@ -412,4 +420,4 @@ def main():
     process_metfiles(netcdf_path, dem_tiles_folder, base_path, selected_date_str)
 
 if __name__ == "__main__":
-    main()
+    main(base_path, building_dsm_filename, dem_filename, trees_filename, tile_size, netcdf_filename, selected_date_str)
