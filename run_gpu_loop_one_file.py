@@ -30,7 +30,7 @@ dem_dir = '/scratch/09295/naveens/Austin_test/DEM/'
 walls_dir = '/scratch/09295/naveens/Austin_test/walls/'
 aspect_dir = '/scratch/09295/naveens/Austin_test/aspect/'
 
-utc = 6.
+utc = 6.  # Change this later
 #wind_speed = torch.tensor(1.5)  # Wind speed = 1.5 m/s
 
 # Wall and ground emissivity and albedo
