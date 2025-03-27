@@ -328,8 +328,8 @@ def create_met_files(base_path, source_met_file):
 # user-supplied met file or a netCDF file. Only the parameters required for the chosen
 # method need to be provided.
 # =============================================================================
-def main(base_path, building_dsm_filename, dem_filename, trees_filename,
-         tile_size, selected_date_str, use_own_met, netcdf_filename=None, own_met_file=None):
+def ppr(base_path, building_dsm_filename, dem_filename, trees_filename,
+         tile_size, selected_date_str, use_own_met=False, netcdf_filename=None, own_met_file=None):
     
     building_dsm_path = os.path.join(base_path, building_dsm_filename)
     dem_path = os.path.join(base_path, dem_filename)
@@ -371,26 +371,26 @@ def main(base_path, building_dsm_filename, dem_filename, trees_filename,
 # Example usage:
 # For processing a netCDF file (use_own_met = False), do not provide own_met_file.
 # =============================================================================
-base_path = 'C:/Users/hk25639/Desktop/Austin/'
-building_dsm_filename = 'Building_DSM.tif'
-dem_filename = 'DEM.tif'
-trees_filename = 'Trees.tif'
-tile_size = 3600
-selected_date_str = '2020-08-13'
+#base_path = 'C:/Users/hk25639/Desktop/Austin/'
+#building_dsm_filename = 'Building_DSM.tif'
+#dem_filename = 'DEM.tif'
+#trees_filename = 'Trees.tif'
+#tile_size = 3600
+#selected_date_str = '2020-08-13'
 
 # When processing a netCDF file:
-use_own_met = False
+#use_own_met = False
 # netcdf_filename = 'Control.nc'   # Required in this case
 
 # When using your own met file:
-use_own_met = True
-own_met_file = os.path.join(base_path, 'ownmet.txt')   # Required in this case
+#use_own_met = True
+#own_met_file = os.path.join(base_path, 'ownmet.txt')   # Required in this case
 
-if __name__ == "__main__":
+#if __name__ == "__main__":
     # For netCDF processing, call main without an own_met_file argument.
     # main(base_path, building_dsm_filename, dem_filename, trees_filename,
     #      tile_size, selected_date_str, use_own_met, netcdf_filename=netcdf_filename)
     
     # For using a custom met file, uncomment the lines below and comment the above call.
-    main(base_path, building_dsm_filename, dem_filename, trees_filename,
-         tile_size, selected_date_str, use_own_met, own_met_file=own_met_file)
+   # main(base_path, building_dsm_filename, dem_filename, trees_filename,
+   #      tile_size, selected_date_str, use_own_met, own_met_file=own_met_file)
