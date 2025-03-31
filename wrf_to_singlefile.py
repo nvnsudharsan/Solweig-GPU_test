@@ -121,7 +121,7 @@ with Dataset(output_file, 'w', format='NETCDF4') as nc:
     psfc_var = nc.createVariable('PSFC', 'f4', ('time', 'lat', 'lon'), zlib=True)
 
     # Set attributes
-    time_var.units = "hours since 2020-08-12 18:00:00"
+    time_var.units = "hours since 1970-01-01 00:00:00"
     time_var.calendar = "gregorian"
     lat_var.units = "degrees_north"
     lon_var.units = "degrees_east"
