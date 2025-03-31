@@ -288,7 +288,7 @@ def process_metfiles(netcdf_file, raster_folder, base_path, selected_date_str):
         with open(output_text_file, "w") as f:
             f.write(" ".join(df.columns) + "\n")
             for _, row in df.iterrows():
-                f.write('{:d} {:d} {:d} {:d} {:.2f} {:.2f} {:.2f} {:.2f} {:.2f} {:.5f} {:.2f} {:.2f} {:.2f} {:.2f} {:.2f} {:.2f} {:.2f} {:.2f} {:.2f} {:.2f} {:.2f} {:.2f} {: .2f}\n'.format(
+                f.write('{:d} {:d} {:d} {:d} {:.2f} {:.2f} {:.2f} {:.2f} {:.2f} {:.5f} {:.2f} {:.2f} {:.2f} {:.2f} {:.2f} {:.2f} {:.2f} {:.2f} {:.2f} {:.2f} {:.2f} {:.2f} {: .2f} {: .2f}\n'.format(
                     int(row["iy"]), int(row["id"]), int(row["it"]), int(row["imin"]),
                     row["Q*"], row["QH"], row["QE"], row["Qs"], row["Qf"],
                     row["Wind"], row["RH"], row["Td"], row["press"], row["rain"],
