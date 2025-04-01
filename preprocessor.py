@@ -464,7 +464,7 @@ def process_metfiles(netcdf_file, raster_folder, base_path, selected_date_str):
     for tif_file in tif_files:
         ds_tif = gdal.Open(tif_file)
         if ds_tif is None:
-            print(f"❌ Could not open {tif_file}. Skipping.")
+            print(f"Could not open {tif_file}. Skipping.")
             continue
         gt_tif = ds_tif.GetGeoTransform()
         xsize = ds_tif.RasterXSize
@@ -503,7 +503,7 @@ def process_metfiles(netcdf_file, raster_folder, base_path, selected_date_str):
         utc_end = local_end.astimezone(pytz.utc)
         
         print(
-            f"📌 {shape_name_clean}: Local {selected_date_str} ({timezone_name}) → "
+            f"{shape_name_clean}: Local {selected_date_str} ({timezone_name}) → "
             f"UTC {utc_start.date()} {utc_start.hour}:00 to {utc_end.date()} {utc_end.hour}:59"
         )
         
@@ -512,10 +512,10 @@ def process_metfiles(netcdf_file, raster_folder, base_path, selected_date_str):
             if utc_start <= dt.replace(tzinfo=pytz.utc) <= utc_end
         ]
         if not time_indices:
-            print(f"❌ No UTC data found for local date {selected_date_str} in {tif_file}.")
+            print(f"No UTC data found for local date {selected_date_str} in {tif_file}.")
             ds_tif = None
             continue
-        print(f"✅ Processing {len(time_indices)} time steps for {shape_name_clean}")
+        print(f"Processing {len(time_indices)} time steps for {shape_name_clean}")
         
         met_new = []
         for t in time_indices:
@@ -661,7 +661,7 @@ def create_met_files(base_path, source_met_file):
 # user-supplied met file or a netCDF file. Only the parameters required for the chosen
 # method need to be provided.
 # =============================================================================
-def main(base_path, building_dsm_filename, dem_filename, trees_filename,
+def ppr(base_path, building_dsm_filename, dem_filename, trees_filename,
          tile_size, selected_date_str, use_own_met,
          start_time=None, end_time=None, data_source_type=None, data_folder=None,
          own_met_file=None):
